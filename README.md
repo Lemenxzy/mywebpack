@@ -3,7 +3,7 @@
 ## why
 
 - Learn webpack's internal packaging mechanism. And can apply some ideas in future project development..Welcome start
--  学习 webpack 的内部打包机制。并且能将一些思想运用在以后的项目开发中..欢迎start
+-  参考 webpack 的内部打包机制。并且能将一些思想运用在以后的项目开发中..欢迎start
 
 
 ## Use
