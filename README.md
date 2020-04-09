@@ -24,9 +24,6 @@ npm run build
 ```
 ## feature
 
-- [x] 
-- [x] 
-
 
 - [x] 本地代码编译构建（Compile and build local code）
 - [x] 类 webpack 构建（Webpack-like build）
