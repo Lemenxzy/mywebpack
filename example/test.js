@@ -5,6 +5,8 @@
  * @Last Modified by zhiyuan.xu
  * @Last Modified Time 2020-04-08
  */
-import a from './test.js'
-console.log(122);
-document.getElementById('app').innerHTML = a;
+import b from './message.js'
+
+const a = 'hello2' + b;
+
+export default a

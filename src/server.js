@@ -17,17 +17,14 @@ const http = require("http");
 let needOpenBro = true;
 
 // webpack dev config
-const config = {
-    entry: 'test/index.js',
-    output: '/dist',
-    port: 3000
-};
+const config = require('../config/dev.config.js');
+console.log(config);
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 // 做一个映射
-app.use('/dist', express.static('public'));
+app.use(`/${config.output}`, express.static('public'));
 
 const server = http.createServer(app);
 // socket
@@ -43,7 +40,7 @@ function reloadJs() {
 
 // 监听文件变化
 let flag = false;
-const watcherDoc = chokidar.watch('test', {
+const watcherDoc = chokidar.watch('example', {
     persistent: true,
     ignoreInitial: true
 });
@@ -87,12 +84,8 @@ io.on("connection", socket => {
         clearInterval(interval);
     }
     interval = setInterval(() => getApiAndEmit(socket), 1000);
-    socket.on("disconnect", () => {
+        socket.on("disconnect", () => {
     });
-    // socket.io 完成之后再进行打开游览器
-    if (needOpenBro) {
-        OpenBro();
-    }
 });
 
 // 根据配置
@@ -103,7 +96,7 @@ function main(config) {
             encoding: 'utf8',
         }).toString();
         html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
-            `<script src="${config.output}/index.js"></script>
+            `<script src="/${config.output}/index.js"></script>
                 <script>
                 function addScript (src, callback) {
                     var newScript = document.createElement('script');
@@ -121,9 +114,8 @@ function main(config) {
                     }
                 };
                 addScript('https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js', function () {
-                    var socket = io('http://localhost:3000');
+                    var socket = io('http://localhost:${config.port}');
                     socket.on("refresh", data => {
-                        console.log(1232321, data);
                         window.location.reload()
                     });
                 });
@@ -134,8 +126,14 @@ function main(config) {
         });
     });
 }
+
 main(config);
 
 server.listen(config.port);
+
+setTimeout(() => {
+    OpenBro();
+},3000);
+
 
 

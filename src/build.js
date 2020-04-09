@@ -7,13 +7,7 @@
  */
 const bundleFile = require('./index.js');
 const fs = require('fs');
-
-// webpack config
-const config = {
-    entry: 'test/index.js',
-    output: './dist',
-    template: './index.html'
-};
+const config = require('../config/build.config.js');
 
 function main(config) {
     const result = bundleFile(config);
