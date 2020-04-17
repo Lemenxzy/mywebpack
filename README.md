@@ -27,4 +27,5 @@ npm run build
 - [x] es6 => es2015
 - [x] 本地代码编译构建（Compile and build local code）
 - [x] 类 webpack 构建（Webpack-like build）
+- [x] dev 模式下自动打开游览器
 - [x] socket.io hot热更新（socket.io hot update）

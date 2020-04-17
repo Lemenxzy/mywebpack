@@ -7,6 +7,6 @@
  */
 import b from './message.js'
 
-const a = 'hello2' + b;
+const a = 'hello' + b;
 
 export default a

@@ -84,8 +84,6 @@ io.on("connection", socket => {
         clearInterval(interval);
     }
     interval = setInterval(() => getApiAndEmit(socket), 1000);
-        socket.on("disconnect", () => {
-    });
 });
 
 // 根据配置
