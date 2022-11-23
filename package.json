@@ -12,7 +12,7 @@
     "@babel/traverse": "^7.9.5",
     "babylon": "^6.18.0",
     "chokidar": "^3.3.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "express": "^4.17.1"
